@@ -15,8 +15,14 @@ int main()
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
+
+    // Tell GLFW what version of OpenGL we are using
+    // in this case we are using Open GL 3.x
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+
+    //Tell GLFW we are using the Core Prfile 
+    // So that means we only have the modern functions 
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 #ifdef __APPLE__
@@ -26,12 +32,15 @@ int main()
     // glfw window creation
     // --------------------
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
+    //Error check if the window fails to create 
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
     }
+
+    //Introduce the window into the current context
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
